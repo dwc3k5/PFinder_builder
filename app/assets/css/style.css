@@ -1,0 +1,25 @@
+html, body{
+  position: relative;
+}
+#statTable{
+  position:absolute;
+  top:25%;
+  left:50%;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 45%;
+}
+
+table {
+
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}

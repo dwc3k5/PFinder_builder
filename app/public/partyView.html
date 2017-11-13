@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>FriendFinder</title>
+
+
+  <!--css-->
+  <link rel="stylesheet" href="../assets/css/style.css">
+	<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<!-- Font Awesome Glyphicons -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+	<!-- Chosen -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
+
+</head>
+<body>
+
+	<div class="container">
+
+		<h2>Pathfinder Character Creator</h2>
+		<hr>
+    <h3 id="points">Current Points: 20</h3>
+
+		<h3><strong>Base Stats</strong></h3>
+		<h4>Important for your character</h4>
+<div>
+    <h3>Strength:</h3><h3 class="str">10</h3>
+    <h3 class="strMod">Modifier:0</h3>
+    <button>-</button>
+    <button class="plus" id="str">+</button>
+    <br>
+
+    <h3>Constitution: 10</h3>
+    <button>-</button>
+    <button class="plus">+</button>
+    <br>
+
+    <h3>Dexterity: 10</h3>
+    <button>-</button>
+    <button class="plus">+</button>
+    <br>
+
+    <h3>Wisdom: 10</h3>
+    <button>-</button>
+    <button class="plus">+</button>
+    <br>
+
+    <h3>Intelligence: 10</h3>
+    <button>-</button>
+    <button class="plus">+</button>
+    <br>
+
+    <h3>Charisma: 10</h3>
+    <button>-</button>
+    <button class="plus">+</button>
+</div>
+    <br>
+
+
+<table id="statTable">
+  <tr>
+    <th>Stat</th>
+    <th>Score</th>
+    <th>Modifier</th>
+  </tr>
+  <tr>
+    <th>Strength</th>
+    <th class="str">10</th>
+    <th class="strMod">0</th>
+  </tr>
+  <tr>
+    <th>Constitution</th>
+    <th>10</th>
+    <th>0</th>
+  </tr>
+  <tr>
+    <th>Dexterity</th>
+    <th>10</th>
+    <th>0</th>
+  </tr>
+  <tr>
+    <th>Wisdom</th>
+    <th>10</th>
+    <th>0</th>
+  </tr>
+  <tr>
+    <th>Intelligence</th>
+    <th>10</th>
+    <th>0</th>
+  </tr>
+  <tr>
+    <th>Charisma</th>
+    <th>10</th>
+    <th>0</th>
+  </tr>
+</table>
+
+
+		<br>
+		<br>
+
+		<!-- Submit Button -->
+		<button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+ Submit</button>
+
+ <!-- Submit Button -->
+ <a href="/charcreate"><button class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+Go Back to Character Creation</button></a>
+
+		<hr>
+	    <footer class="footer">
+	      <div class="container">
+		        <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/afhaque/friendfinder">GitHub Repo</a></p>
+	      </div>
+	    </footer>
+
+	</div>
+  <!-- <script src="../assets/javascript/script.js"></script> -->
+  <script type="text/javascript">
+	function buildParty(){
+		var currentURL = window.location.origin;
+
+		$.ajax({url:currentURL+"/api/tables", method:"GET"})
+			.done(function(tableData){
+				console.log("URL:"+currentURL+"api/tables");
+				console.log(tableData);
+			});
+	}
+$(document).ready(function(){
+	buildParty();
+});
+
+
+
+  </script>
+
+
+</body>
+
+</html>

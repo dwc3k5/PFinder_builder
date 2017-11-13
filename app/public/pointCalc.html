@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>FriendFinder</title>
+
+
+  <!--css-->
+  <link rel="stylesheet" href="../assets/css/style.css">
+	<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<!-- Font Awesome Glyphicons -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+	<!-- Chosen -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
+
+</head>
+<body>
+
+		<div class="container">
+
+			<h2>Pathfinder Character Creator</h2>
+			<hr>
+	    <h3 id="points">Current Points: 20</h3>
+
+			<h3><strong>Base Stats</strong></h3>
+			<h4>Important for your character</h4>
+	<div>
+	    <h3>Strength:</h3><h3 class="str">10</h3>
+	    <button class="minus" id="str">-</button>
+	    <button class="plus" id="str">+</button>
+	    <br>
+
+	    <h3>Constitution:</h3><h3 class="con">10</h3>
+	    <button class="minus" id="con">-</button>
+	    <button class="plus" id="con">+</button>
+	    <br>
+
+	    <h3>Dexterity:</h3><h3 class="dex">10<h3>
+	    <button class="minus" id="dex">-</button>
+	    <button class="plus" id="dex">+</button>
+	    <br>
+
+	    <h3>Wisdom:</h3><h3 class="wis">10</h3>
+	    <button class="minus" id="wis">-</button>
+	    <button class="plus" id="wis">+</button>
+	    <br>
+
+	    <h3>Intelligence:</h3><h3 class="int">10</h3>
+	    <button class="minus" id="int">-</button>
+	    <button class="plus" id="int">+</button>
+	    <br>
+
+	    <h3>Charisma:</h3><h3 class="cha">10</h3>
+	    <button class="minus" id="cha">-</button>
+	    <button class="plus" id="cha">+</button>
+	</div>
+	    <br>
+
+
+	<table id="statTable">
+	  <tr>
+	    <th>Stat</th>
+	    <th>Score</th>
+	    <th>Modifier</th>
+	  </tr>
+	  <tr>
+	    <th>Strength</th>
+	    <th class="str">10</th>
+	    <th class="strMod">0</th>
+	  </tr>
+	  <tr>
+	    <th>Constitution</th>
+	    <th class="con">10</th>
+	    <th class="conMod">0</th>
+	  </tr>
+	  <tr>
+	    <th>Dexterity</th>
+	    <th class="dex">10</th>
+	    <th class="dexMod">0</th>
+	  </tr>
+	  <tr>
+	    <th>Wisdom</th>
+	    <th class="wis">10</th>
+	    <th class="wisMod">0</th>
+	  </tr>
+	  <tr>
+	    <th>Intelligence</th>
+	    <th class="int">10</th>
+	    <th class="intMod">0</th>
+	  </tr>
+	  <tr>
+	    <th>Charisma</th>
+	    <th class="cha">10</th>
+	    <th class="chaMod">0</th>
+	  </tr>
+	</table>
+
+
+			<br>
+			<br>
+
+			<!-- Submit Button -->
+			<button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+	 Submit</button>
+
+	 <!-- Submit Button -->
+	 <a href="/charcreate"><button class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+	Go Back to Character Creation</button></a>
+
+			<hr>
+		    <footer class="footer">
+		      <div class="container">
+			        <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/afhaque/friendfinder">GitHub Repo</a> | <a href="/api/tables">View premades</a></p>
+		      </div>
+		    </footer>
+
+		</div>
+  <!-- <script src="../assets/javascript/script.js"></script> -->
+  <script type="text/javascript">
+	// var charArray = require("./../data/characters.js");
+	var points = 20;
+
+	// ["strength", "constitution", "dexterity", "wisdom", "intellect", "charisma"];
+	var char = [10,10,10,10,10,10];
+
+
+
+	function checkUp(stat, target){
+		if (char[target] <13 && points>0){
+			points --;
+			char[target]++;
+		}else if(char[target]< 15 && points >=2){
+			points -=2;
+			char[target]++;
+		}else if(char[target]<17 && points >=3){
+			points -=3;
+			char[target]++;
+		}else if(char[target]<18 && points >=4){
+			points -=4;
+			char[target] ++;
+		}else{
+			console.log("your stat is maxed or you lack the points!");
+		}
+	}
+
+	function checkDown(stat, target){
+		if(char[target]<8){
+			points +=2;
+			char[target] --;
+		}else if(char[target]<13){
+			points ++;
+			char[target]--;
+		}else if(char[target]<15){
+			points +=2;
+			char[target]--;
+		}else if(char[target]<17){
+			points +=3;
+			char[target]--;
+		}else if(char[target]=18){
+			points +=4;
+			char[target]--;
+		}
+	}
+
+	function apply(stat, target){
+		var mod;
+		$("."+stat).text(char[target]);
+		if(char[target]<8){
+			mod = -2;
+		}else if(char[target]<10){
+			mod = -1;
+		}else if (char[target]<12){
+			mod = 0;
+		}else if (char[target]<14){
+			mod = 1;
+		}else if (char[target]<16){
+			mod = 2;
+		}else if (char[target]<18){
+			mod = 3;
+		}else{
+			mod = 4;
+		}
+		$("."+stat+"Mod").text(mod);
+		$("#points").text("Points: "+points);
+	}
+	//when the plus button is clicked
+		$(".plus").click(function(){
+			var target;
+			var stat = $(this).attr("id");
+
+			switch(stat){
+				case"str":
+				target = 0;
+				break;
+
+				case"con":
+				target = 1;
+				break;
+
+				case"dex":
+				target = 2;
+				break;
+
+				case"wis":
+				target = 3;
+				break;
+
+				case"int":
+				target = 4;
+				break;
+
+				case"cha":
+				target = 5;
+				break;
+			}
+			checkUp(stat, target);
+			apply(stat, target);
+			console.log(char);
+			console.log(points);
+		});
+
+		//when the plus button is clicked
+			$(".minus").click(function(){
+				var target;
+				var stat = $(this).attr("id");
+
+				switch(stat){
+					case"str":
+					target = 0;
+					break;
+
+					case"con":
+					target = 1;
+					break;
+
+					case"dex":
+					target = 2;
+					break;
+
+					case"wis":
+					target = 3;
+					break;
+
+					case"int":
+					target = 4;
+					break;
+
+					case"cha":
+					target = 5;
+					break;
+				}
+				checkDown(stat, target);
+				apply(stat, target);
+				console.log(char);
+				console.log(points);
+			});
+$("#submit").click(function(event){
+	event.preventDefault();
+
+	var newChar = {
+		name: "New Character",
+		class: "filler class",
+		race: "computer",
+		stats:char
+	}
+	console.log(newChar);
+
+	var currentURL = window.location.origin;
+	$.post(currentURL+"/api/tables", newChar,
+		function(data) {
+			if(data){
+				console.log(char);
+				console.log("character stored!");
+			}else{
+				console.log("could not upload");
+			}
+
+			// If a table is available... tell user they are booked.
+		});
+});
+  </script>
+
+
+</body>
+
+</html>
