@@ -1,6 +1,26 @@
+var mysql = require("mysql");
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
+
+
+
+var connection ;
+
+if(process.env.JAWSDB_UL) {
+  connection = mysql.createConnection(process.env.JAWSDB_UL);
+} else {
+  connection = mysql.createConnection({
+    host:"localhost",
+    user:"root",
+    password:"",
+    database:"default_db"
+  });
+}
+connection.connect();
+module.exports = connection;
+
+
 
 var app = express();
 var PORT = process.env.PORT || 8081;
