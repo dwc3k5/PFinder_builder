@@ -32,8 +32,8 @@
 			<h4>Important for your character</h4>
 	<div>
 	    <h3>Strength:</h3><h3 class="str">10</h3>
-	    <button class="minus" id="str">-</button>
-	    <button class="plus" id="str">+</button>
+	    <button data-plusMinus="minus" class="plusMinus" id="str">-</button>
+	    <button data-plusMinus="plus" class="plusMinus" id="str">+</button>
 	    <br>
 
 	    <h3>Constitution:</h3><h3 class="con">10</h3>
@@ -190,43 +190,44 @@
 		$("#points").text("Points: "+points);
 	}
 	//when the plus button is clicked
-		$(".plus").click(function(){
-			var target;
-			var stat = $(this).attr("id");
-
-			switch(stat){
-				case"str":
-				target = 0;
-				break;
-
-				case"con":
-				target = 1;
-				break;
-
-				case"dex":
-				target = 2;
-				break;
-
-				case"wis":
-				target = 3;
-				break;
-
-				case"int":
-				target = 4;
-				break;
-
-				case"cha":
-				target = 5;
-				break;
-			}
-			checkUp(stat, target);
-			apply(stat, target);
-			console.log(char);
-			console.log(points);
-		});
+		// $(".plus").click(function(){
+		// 	var target;
+		// 	var stat = $(this).attr("id");
+    //
+		// 	switch(stat){
+		// 		case"str":
+		// 		target = 0;
+		// 		break;
+    //
+		// 		case"con":
+		// 		target = 1;
+		// 		break;
+    //
+		// 		case"dex":
+		// 		target = 2;
+		// 		break;
+    //
+		// 		case"wis":
+		// 		target = 3;
+		// 		break;
+    //
+		// 		case"int":
+		// 		target = 4;
+		// 		break;
+    //
+		// 		case"cha":
+		// 		target = 5;
+		// 		break;
+		// 	}
+    //
+		// 	apply(stat, target);
+		// 	console.log(char);
+		// 	console.log(points);
+		// });
 
 		//when the plus button is clicked
-			$(".minus").click(function(){
+			$(".plusMinus").click(function(){
+
 				var target;
 				var stat = $(this).attr("id");
 
@@ -255,7 +256,15 @@
 					target = 5;
 					break;
 				}
-				checkDown(stat, target);
+
+				if ($(this).attr("data-plusMinus") === "minus") {
+
+						checkDown(stat, target);
+				} else {
+
+					checkUp(stat, target);
+				}
+
 				apply(stat, target);
 				console.log(char);
 				console.log(points);

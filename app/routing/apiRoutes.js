@@ -21,17 +21,6 @@ module.exports = function(app) {
       characters.push(req.body);
   });
 
-
-
-  app.get("/api/temps", function(req, res){
-    res.json(character);
-  });
-
-  app.post("api/temps", function(req, res){
-      character.push(req.body);
-  });
-
-
   // app.post("/api/clear", function() {
   //   // Empty out the arrays of data
   //   tableData = [];

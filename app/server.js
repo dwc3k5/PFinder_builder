@@ -14,7 +14,7 @@ if(process.env.JAWSDB_UL) {
     host:"localhost",
     user:"root",
     password:"",
-    database:"default_db"
+    database:"d7cxs87za6ci74os"
   });
 }
 connection.connect();
