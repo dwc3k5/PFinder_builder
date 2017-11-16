@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>FriendFinder</title>
+
+	<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<!-- Font Awesome Glyphicons -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+	<!-- Chosen -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
+
+</head>
+<body>
+
+	<div class="container">
+    <div>
+      <h3>Input user ID</h3>
+      <input type="text" name="name" id="user" class="form-control" required="">
+
+      <h3>input char ID</h3>
+      <input type="text" name="name" id="name" class="form-control" required="">
+
+      <a href="/charcreate"><button class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+       Point Calculator</button></a>
+    </div>
+
+
+		<!-- Submit Button -->
+		<hr>
+	    <footer class="footer">
+	      <div class="container">
+		        <p><a href="/api/temp">See Yourself</a> | <a href="https://github.com/afhaque/friendfinder">GitHub Repo</a> | <a href="/api/tables">View premades</a></p>
+	      </div>
+	    </footer>
+
+	</div>
+
+  <script type="text/javascript">
+
+$("#submit").on("click", function(){
+  var newUser = $("#user").val().trim()
+
+  $.post("api/userid",
+  {newUser: newUser},
+  function(data){
+    console.log(data);
+  });
+
+	var user ={user: newUser};
+	$.post("api/temp", {newUser});
+  $("#user").val("");
+  $("#name").val("");
+});
+</script>
+
+</body>
+<!-- <script src="../assets/javascript/script.js"></script> -->
+</html>

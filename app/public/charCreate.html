@@ -25,68 +25,56 @@
 		<hr>
 
 		<h3><strong>Character Creation</strong></h3>
-	<form id="charCreator">
+	<!-- <form id="charCreator"> -->
 		<h4>Character Name (Required)</h4>
-		<input type="text" name="name" id="name" class="form-control" required="">
+		<input type="text" name="name" id="name" class="form-control">
 
 		<h4>Character Image (Required)</h4>
-		<input type="text" name="image" id="photo" class="form-control" required="">
+		<input type="text" name="image" id="photo" class="form-control">
 
 
 
 		<h3><strong>Fantasy Level</strong></h3>
 		<h4>Fantasy levels determine the points you have to increase stats</h4>
-		<div class="btn-group">
-		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		    Fantasy Level <span class="caret"></span>
-		  </button>
-		  <ul class="dropdown-menu">
-		    <li><a href="#">Low Fantasy: 10 points</a></li>
-		    <li><a href="#">Standard Fantasy: 15 points</a></li>
-		    <li><a href="#">High Fantasy: 20 points</a></li>
-				 <li><a href="#">Epic Fantasy: 25 points</a></li>
-		  </ul>
-		</div>
+
+		  <select id="FLvl">
+		    <option value ="Low">Low Fantasy: 10 points</option>
+		    <option value = "Standard">Standard Fantasy: 15 points</option>
+		    <option value = "High">High Fantasy: 20 points</option>
+				<option value = "Epic">Epic Fantasy: 25 points</option>
+		  </select>
 
 		<h3><strong>Class</strong></h3>
 		<h4>Classes define determine what your character does</h4>
-		<div class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Class <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu">
-				<li><a href="#">Fighter</a></li>
-				<li><a href="#">Barbarian</a></li>
-				<li><a href="#">Monk</a></li>
-				 <li><a href="#">Rogue</a></li>
-				 <li><a href="#">Cleric</a></li>
-				 <li><a href="#">Paladin</a></li>
-				 <li><a href="#">Ranger</a></li>
-				 <li><a href="#">Wizard</a></li>
-				 <li><a href="#">Bard</a></li>
-				 <li><a href="#">Sorcerer</a></li>
-			</ul>
-		</div>
+
+			<select id="class">
+				<option value="Fighter">Fighter</option>
+				<option value="Barbarian">Barbarian</option>
+				<option value="Monk">Monk</option>
+				<option value="Rogue">Rogue</option>
+				<option value="Cleric">Cleric</option>
+				<option value="Paladin">Paladin</option>
+				<option value="Ranger">Ranger</option>
+				<option value="Wizard">Wizard</option>
+				<option value="Sorcerer">Sorcerer</option>
+				<option value="Bard">Bard</option>
+			</select>
+
 
 		<h3><strong>Race</strong></h3>
 
 		<h4>Each race impacts stats and comes with race specific traits</h4>
-		<div class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Race <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu">
-				<li><a value="human">Human</a></li>
-				<li><a href="#">Half-Elf</a></li>
-				<li><a href="#">Half-Orc</a></li>
-				 <li><a href="#">Halfling</a></li>
-				 <li><a href="#">Elf</a></li>
-				 <li><a href="#">Gnome</a></li>
-				 <li><a href="#">Dwarf</a></li>
-			</ul>
-		</div>
-		<button type="submit">Update Your Character Info</button>
-	</form>
+
+			<select id="race">
+				<option value="Human">human</option>
+				<option value="HalfElf">Half-Elf</option>
+				<option value="HalfOrc">Half-Orc</option>
+				<option value="Halfling">Halfling</option>
+				<option value="Elf">Elf</option>
+				<option value="Gnome">Gnome</option>
+				<option value="Dwarf">Dwarf</option>
+			</select>
+
 
 		<table id="statTable">
 		  <tr>
@@ -104,100 +92,34 @@
 		</table>
 
 		<!-- Submit Button -->
-		<a href="/pointcalc"><button class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+		<a href=""><button class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
  Point Calculator</button></a>
 
 		<hr>
 	    <footer class="footer">
 	      <div class="container">
-		        <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/afhaque/friendfinder">GitHub Repo</a> | <a href="/api/tables">View premades</a></p>
+		        <p><a href="/api/temp">See Yourself</a> | <a href="https://github.com/afhaque/friendfinder">GitHub Repo</a> | <a href="/api/tables">View premades</a></p>
 	      </div>
 	    </footer>
-
+		</div>
+	<div>
 	</div>
+	<script type="text/javascript">
+		$("#submit").on("click", function(event){
+			event.preventDefault();
 
-  <script type="text/javascript">
-
-$("charCreator").on("submit", function(event){
-	event.preventDefault();
-
-	var newName = {
-		name: $("#charCreator [name=name]").val().trim()
-	};
-	var newImg = {
-		img: $("#charCreator [name=img]").val().trim()
-	};
-	var newClass;
-	var newRace;
-	var newFLv;
-});
-	// Chosen CSS
-	var config = {
-		'.chosen-select'           : {},
-		'.chosen-select-deselect'  : {allow_single_deselect:true},
-		'.chosen-select-no-single' : {disable_search_threshold:10},
-		'.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-		'.chosen-select-width'     : {width:"95%"}
-	}
-	for (var selector in config) {
-		$(selector).chosen(config[selector]);
-	}
-
-	// Capture the form inputs
-	$("#submit").on("click", function(){
-
-		// Form validation
-		function validateForm() {
-		var isValid = true;
-		$('.form-control').each(function() {
-			if ( $(this).val() === '' )
-					isValid = false;
+			$.post("/api/charcreate",
+		  {
+				charName: $("#name").val().trim(),
+				charRace: $("#race").val(),
+				charClass: $("#class").val(),
+				charFlvl: $("#FLvl").val()
+			},
+		  function(data){
+		    console.log(data);
+		  });
 		});
-
-		$('.chosen-select').each(function() {
-
-			if( $(this).val() === "")
-				isValid = false
-		})
-		return isValid;
-	}
-
-	// If all required fields are filled
-	if (validateForm() == true)
-	{
-		// Create an object for the user's data
-			var userData = {
-				name: $("#name").val(),
-				photo: $("#photo").val(),
-				scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(), ]
-			}
-
-
-			// Grab the URL of the website
-			var currentURL = window.location.origin;
-
-			// AJAX post the data to the friends API.
-			$.post(currentURL + "/api/friends", userData, function(data){
-
-				// Grab the result from the AJAX post so that the best match's name and photo are displayed.
-				$("#matchName").text(data.name);
-				$('#matchImg').attr("src", data.photo);
-
-				// Show the modal with the best match
-				$("#resultsModal").modal('toggle');
-
-			});
-	}
-	else
-	{
-		alert("Please fill out all fields before submitting!");
-	}
-
-		return false;
-	});
-
-
-</script>
+	</script>
 
 </body>
 <!-- <script src="../assets/javascript/script.js"></script> -->

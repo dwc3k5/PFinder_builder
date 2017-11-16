@@ -110,8 +110,8 @@
 	 Submit</button>
 
 	 <!-- Submit Button -->
-	 <a href="/charcreate"><button class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
-	Go Back to Character Creation</button></a>
+	 <!-- <a href="/charcreate"><button class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+	Go Back to Character Creation</button></a> -->
 
 			<hr>
 		    <footer class="footer">
@@ -271,17 +271,15 @@
 			});
 $("#submit").click(function(event){
 	event.preventDefault();
-
-	var newChar = {
-		name: "New Character",
-		class: "filler class",
-		race: "computer",
-		stats:char
-	}
-	console.log(newChar);
-
 	var currentURL = window.location.origin;
-	$.post(currentURL+"/api/tables", newChar,
+	$.post(currentURL+"/api/charStats",
+		{	str: char[0],
+			con: char[1],
+			dex: char[2],
+			wis: char[3],
+			inte: char[4],
+			cha: char[5]
+		},
 		function(data) {
 			if(data){
 				console.log(char);

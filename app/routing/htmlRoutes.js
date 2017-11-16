@@ -3,7 +3,7 @@ var path = require("path");
 
 module.exports = function (app){
 
-    app.get("/charcreate", function(req, res) {
+    app.get("/charCreate", function(req, res) {
       res.sendFile(path.join(__dirname, "../public/charCreate.html"));
     });
 
@@ -13,7 +13,12 @@ module.exports = function (app){
     app.get("/partyview", function(req, res) {
       res.sendFile(path.join(__dirname, "../public/partyview.html"));
     });
-    app.use(function(req, res){
-      res.sendFile(path.join(__dirname, "../public/charCreate.html"));
+    app.get("/partyview", function(req, res) {
+      res.sendFile(path.join(__dirname, "../public/partyview.html"));
     });
+    app.use(function(req, res){
+      res.sendFile(path.join(__dirname, "../public/login.html"));
+    });
+
+
 };
