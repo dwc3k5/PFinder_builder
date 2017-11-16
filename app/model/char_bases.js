@@ -14,6 +14,8 @@ var CharBase = sequelize.define("char_bases", {
   char_id: {
     type: Sequelize.INTEGER,
     primaryKey: true
+    // autoIncrement: true,
+    // defaultValue: Sequelize.NOW
   },
   char_name:{
     type: Sequelize.STRING
