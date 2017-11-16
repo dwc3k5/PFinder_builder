@@ -7,14 +7,14 @@ var temp = require("../data/temp.js");
 var characters = require("../data/characters.js");
 var User = require("../model/users.js");
 var CharStats = require("../model/char_stats.js");
-var CharBase = require("../model/char_base.js");
+var CharBase = require("../model/char_bases.js");
 
 // ===============================================================================
 // ROUTING
 // ===============================================================================
 
 module.exports = function(app) {
-console.log("hi");
+console.log("api routes hit");
 
 //==============================================================================
 //LOGIN
@@ -39,7 +39,6 @@ console.log("hi");
     console.log(req.body);
     CharBase.create({
       user_id: 1,
-      char_id:2,
       char_name: req.body.charName,
       char_race: req.body.charRace,
       char_class: req.body.charClass,

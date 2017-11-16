@@ -7,7 +7,7 @@ var Sequelize = require("sequelize");
 var sequelize = require("../config/connection.js");
 
 // Creates a "Chirp" model that matches up with DB
-var CharBase = sequelize.define("char_base", {
+var CharBase = sequelize.define("char_bases", {
   user_id: {
     type: Sequelize.INTEGER,
   },
